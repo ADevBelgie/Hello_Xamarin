@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hello_Xamarin.Views.BindingPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Groeten en fruit"/>
+            <Entry Text="{Binding Fruit.Name}" Placeholder="Name"/>
+            <Entry Text="{Binding Fruit.Weight}" Placeholder="Weight"/>
+            <Entry Text="{Binding Fruit.Color}" Placeholder="Color"/>
+            <Entry Text="{Binding Fruit.PriceKilo}" Placeholder="PriceKilo"/>
+            <Entry Text="{Binding Fruit.Id}" Placeholder="Id"/>
+            <Entry Text="{Binding Fruit.Species}" Placeholder="Species"/>
+            <Entry Text="{Binding Klant}" Placeholder="Klant"/>
+            <Button Text="Update" Command="{Binding UpdateFruit}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
