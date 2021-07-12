@@ -19,7 +19,7 @@ namespace Hello_Xamarin.Services
 
         public Fruit GetFruit(int id)
         {
-            return fruits.FirstOrDefault(x => x.Id == id);
+            return fruits.FirstOrDefault(fruit => fruit.Id == id);
         }
 
         private List<Fruit> InitializeFruits()
