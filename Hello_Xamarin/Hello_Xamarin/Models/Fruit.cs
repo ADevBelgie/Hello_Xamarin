@@ -6,6 +6,10 @@ namespace Hello_Xamarin.Models
 {
     public class Fruit
     {
+        public Fruit()
+        {
+
+        }
         public Fruit(string species, string image)
         {
             Species = species;
