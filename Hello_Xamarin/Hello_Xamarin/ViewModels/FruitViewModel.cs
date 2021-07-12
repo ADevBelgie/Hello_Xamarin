@@ -1,4 +1,5 @@
 ﻿using Hello_Xamarin.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
@@ -16,6 +17,8 @@ namespace Hello_Xamarin.ViewModels
 
         public Command RemoveFruitCommand { get; }
 
+        public Command<Fruit> ItemTappedCommand { get; }
+
         public FruitViewModel()
         {
             Fruit.Add(new Fruit("Apple", "apple.jpg"));
@@ -25,6 +28,14 @@ namespace Hello_Xamarin.ViewModels
             UpdateFruitCommand = new Command(OnFruitUpdate);
             AddFruitCommand = new Command(OnAddFruit);
             RemoveFruitCommand = new Command(OnRemoveFruit);
+
+            // Pass an item into an event by placing it in generic tags
+            ItemTappedCommand = new Command<Fruit>(OnItemTapped);
+        }
+
+        private void OnItemTapped(Fruit fruit)
+        {
+            throw new NotImplementedException();
         }
 
         private void OnFruitUpdate(object obj)

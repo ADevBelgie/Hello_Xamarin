@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Hello_Xamarin.ViewModels"
              x:Class="Hello_Xamarin.Views.BindingPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Fruit" Command="{Binding AddFruitCommand}"/>
@@ -8,7 +9,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView ItemsSource="{Binding Fruit}">
+            <CollectionView ItemsSource="{Binding Fruit}"
+                            SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
@@ -18,6 +20,13 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer 
+                    NumberOfTapsRequired="1"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type model:FruitViewModel}}, Path=ItemTappedCommand}"
+                    CommandParameter="{Binding .}" />
+            </StackLayout.GestureRecognizers>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
