@@ -1,8 +1,6 @@
 ﻿using Hello_Xamarin.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Hello_Xamarin.ViewModels
@@ -11,7 +9,7 @@ namespace Hello_Xamarin.ViewModels
     {
         public ObservableCollection<Fruit> Fruit { get; set; } = new ObservableCollection<Fruit>();
         public string Klant { get; set; } = "Verkoper";
-        
+
         public Command UpdateFruitCommand { get; }
 
         public Command AddFruitCommand { get; }
@@ -31,7 +29,6 @@ namespace Hello_Xamarin.ViewModels
 
         private void OnFruitUpdate(object obj)
         {
-            
         }
 
         private void OnAddFruit()
@@ -41,7 +38,10 @@ namespace Hello_Xamarin.ViewModels
 
         private void OnRemoveFruit()
         {
-            Fruit.RemoveAt(Fruit.Count - 1);
+            if (Fruit.Any())
+            {
+                Fruit.RemoveAt(Fruit.Count - 1);
+            }
         }
     }
 }
