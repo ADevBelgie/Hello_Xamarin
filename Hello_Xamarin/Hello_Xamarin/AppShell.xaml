@@ -87,8 +87,8 @@
     <FlyoutItem Title="Fruit" Icon="icon_about.png">
         <ShellContent Route="BindingPage" ContentTemplate="{DataTemplate local:BindingPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Fruit detail" Icon="icon_about.png">
-        <ShellContent Route="FruitDetailPage" ContentTemplate="{DataTemplate local:FruitDetailPage}" />
+    <FlyoutItem Title="Star Wars Characters" Icon="icon_about.png">
+        <ShellContent Route="StarWarsOverviewPage" ContentTemplate="{DataTemplate local:StarWarsOverviewPage}" />
     </FlyoutItem>
 
 <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

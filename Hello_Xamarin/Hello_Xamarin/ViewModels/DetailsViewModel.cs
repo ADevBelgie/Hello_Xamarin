@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Hello_Xamarin.ViewModels
 {
-    public class DetailsViewModel: BaseViewModel
+    public class DetailsViewModel : BaseViewModel
     {
         public DetailsViewModel()
         {
@@ -21,6 +21,6 @@ namespace Hello_Xamarin.ViewModels
             };
 
         }
-        public Fruit Fruit { get; set; } 
+        public Fruit Fruit { get; set; }
     }
 }
