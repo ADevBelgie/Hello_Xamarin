@@ -2,18 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hello_Xamarin.Views.BindingPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Fruit" Command="{Binding AddFruitCommand}"/>
+        <ToolbarItem Text="Remove Fruit" Command="{Binding RemoveFruitCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding Fruit}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Fruit}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="{Binding Image}" WidthRequest="200"/>
                             <Label Text="{Binding Species}"/>
                         </StackLayout>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
