@@ -41,7 +41,10 @@ namespace Hello_Xamarin.ViewModels
 
         private void OnRemoveFruit()
         {
-            Fruit.RemoveAt(Fruit.Count - 1);
+            if (Fruit.Count > 0)
+            {
+                Fruit.RemoveAt(Fruit.Count - 1);
+            }
         }
     }
 }
