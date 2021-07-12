@@ -12,8 +12,9 @@ namespace Hello_Xamarin.Models
             
         }
 
-        public Fruit(string species, string image)
+        public Fruit(int id ,string species, string image)
         {
+            Id = id;
             Species = species;
             Image = image;
         }

@@ -16,17 +16,22 @@
                         <StackLayout Orientation="Horizontal">
                             <Image Source="{Binding Image}" WidthRequest="200"/>
                             <Label Text="{Binding Species}"/>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type model:FruitViewModel}}, Path=ItemTappedCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
+                        
+                        
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer 
-                    NumberOfTapsRequired="1"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type model:FruitViewModel}}, Path=ItemTappedCommand}"
-                    CommandParameter="{Binding .}" />
-            </StackLayout.GestureRecognizers>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

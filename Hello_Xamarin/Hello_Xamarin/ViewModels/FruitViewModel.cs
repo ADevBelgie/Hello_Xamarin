@@ -1,14 +1,23 @@
 ﻿using Hello_Xamarin.Models;
+using Hello_Xamarin.Services;
+using Hello_Xamarin.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Hello_Xamarin.ViewModels
 {
     public class FruitViewModel : BaseViewModel
     {
+        
         public ObservableCollection<Fruit> Fruit { get; set; } = new ObservableCollection<Fruit>();
+
+        private Fruit _selectedFruit;
+
+        private FruitService fruitService;
+
         public string Klant { get; set; } = "Verkoper";
 
         public Command UpdateFruitCommand { get; }
@@ -21,21 +30,35 @@ namespace Hello_Xamarin.ViewModels
 
         public FruitViewModel()
         {
-            Fruit.Add(new Fruit("Apple", "apple.jpg"));
-            Fruit.Add(new Fruit("Banana", "Banana.jpg"));
-            Fruit.Add(new Fruit("Pear", "pear.jpg"));
+            fruitService = new FruitService();
+            var list = fruitService.GetFruits();
+
+            foreach (var item in list)
+            {
+                Fruit.Add(item);
+            }
 
             UpdateFruitCommand = new Command(OnFruitUpdate);
             AddFruitCommand = new Command(OnAddFruit);
             RemoveFruitCommand = new Command(OnRemoveFruit);
 
             // Pass an item into an event by placing it in generic tags
-            ItemTappedCommand = new Command<Fruit>(OnItemTapped);
+            ItemTappedCommand = new Command<Fruit>(OnItemTappedAsync);
         }
 
-        private void OnItemTapped(Fruit fruit)
+        private async void OnItemTappedAsync(Fruit fruit)
         {
-            throw new NotImplementedException();
+            await Shell.Current.GoToAsync($"{nameof(FruitDetailPage)}?{nameof(FruitDetailViewModel.FruitID)}={fruit.Id}");
+        }
+
+        public Fruit SelectedFruit
+        {
+            get => _selectedFruit;
+            set
+            {
+                SetProperty(ref _selectedFruit, value);
+                OnItemTappedAsync(value);
+            }
         }
 
         private void OnFruitUpdate(object obj)
@@ -44,7 +67,7 @@ namespace Hello_Xamarin.ViewModels
 
         private void OnAddFruit()
         {
-            Fruit.Add(new Fruit("Apple", "apple.jpg"));
+            Fruit.Add(new Fruit(4, "Apple", "apple.jpg"));
         }
 
         private void OnRemoveFruit()

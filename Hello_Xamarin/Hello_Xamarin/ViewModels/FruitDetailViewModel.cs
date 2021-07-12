@@ -1,22 +1,45 @@
 ﻿using Hello_Xamarin.Models;
+using Hello_Xamarin.Services;
+using Xamarin.Forms;
 
 namespace Hello_Xamarin.ViewModels
 {
-    public class FruitDetailViewModel: BaseViewModel
+    [QueryProperty(nameof(FruitID), nameof(FruitID))]
+    public class FruitDetailViewModel : BaseViewModel
     {
-        public Fruit Fruit { get; set; }
+        private int fruitID;
+        private FruitService fruitService;
+
+        private Fruit fruit;
+
+        public Fruit Fruit
+        {
+            get { return fruit; }
+            set
+            {
+                fruit = value;
+                OnPropertyChanged(nameof(Fruit));
+            }
+        }
+
+        public int FruitID
+        {
+            get { return fruitID; }
+            set
+            {
+                fruitID = value;
+                LoadFruit(value);
+            }
+        }
+
+        private void LoadFruit(int id)
+        {
+            Fruit = fruitService.GetFruit(id);
+        }
 
         public FruitDetailViewModel()
         {
-            Fruit = new Fruit
-            {
-                Color = "Red",
-                Image = "apple.jpg",
-                Name = "Red Apple",
-                PriceKilo = 2,
-                Species = "Akane",
-                Weight = 25
-            };
+            fruitService = new FruitService();
         }
     }
 }
