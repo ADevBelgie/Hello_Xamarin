@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Hello_Xamarin.ViewModels;assembly=Hello_Xamarin"
+             x:Class="Hello_Xamarin.Views.FruitDetailPage">
+    <ContentPage.Content>
+        <StackLayout x:DataType="viewModels:FruitDetailViewModel" Padding="10">
+            <Image Source="{Binding Fruit.Image}" />
+            <Label Text="{Binding Fruit.Name, StringFormat='Name: {0}'}"/>
+            <Label Text="{Binding Fruit.Color, StringFormat='Color: {0}'}"/>
+            <Label Text="{Binding Fruit.Species, StringFormat='Species: {0}'}"/>
+            <Label Text="{Binding Fruit.PriceKilo, StringFormat='PriceKilo: {0}'}"/>
+            <Label Text="{Binding Fruit.Weight, StringFormat='Weight: {0}'}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

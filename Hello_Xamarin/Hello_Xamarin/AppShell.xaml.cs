@@ -14,7 +14,7 @@ namespace Hello_Xamarin
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(BindingPage), typeof(BindingPage));
-            Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
+            Routing.RegisterRoute(nameof(FruitDetailPage), typeof(FruitDetailPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
