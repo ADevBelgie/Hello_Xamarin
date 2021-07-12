@@ -33,6 +33,7 @@ namespace Hello_Xamarin.ViewModels
 
             foreach (var character in characters)
             {
+                character.image = $"https://starwars.egghead.training/{character.image}";
                 Characters.Add(character);
             }
 
